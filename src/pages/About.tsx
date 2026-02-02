@@ -57,7 +57,6 @@ const About = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="01"
             title="What We Are"
           />
 
@@ -96,7 +95,6 @@ const About = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="02"
             title="How We Work"
           />
 
@@ -128,7 +126,6 @@ const About = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="03"
             title="Get in Touch"
           />
 

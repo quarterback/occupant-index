@@ -41,7 +41,6 @@ const Methodology = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="01"
             title="Overview"
           />
 
@@ -80,7 +79,6 @@ const Methodology = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="02"
             title="Market Basket Construction"
           />
 
@@ -151,7 +149,6 @@ const Methodology = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="03"
             title="Pricing Methodology"
           />
 
@@ -212,7 +209,6 @@ where:
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="04"
             title="Sub-Indices"
           />
 
