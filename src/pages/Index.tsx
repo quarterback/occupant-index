@@ -129,7 +129,6 @@ const Index = () => {
       <section className="py-20 md:py-32 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="01"
             title="What We Track"
             subtitle="Compute CPI measures the inflation rate of AI work using a market-basket methodology modeled on the Consumer Price Index."
           />
@@ -177,7 +176,6 @@ const Index = () => {
       <section className="py-20 md:py-32 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="02"
             title="What We Do"
             subtitle="Trust + Decision Engineering for institutions whose judgment now depends on systems they don't control."
           />
@@ -260,7 +258,6 @@ const Index = () => {
       <section className="py-20 md:py-32 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="03"
             title="Recent Memos"
             subtitle="Analysis and frameworks from Occupant research."
           />

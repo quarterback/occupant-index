@@ -160,7 +160,6 @@ const ComputeCPI = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="01"
             title="Spreads"
             subtitle="Key differentials that reveal market structure and capability stratification."
           />
@@ -187,7 +186,6 @@ const ComputeCPI = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="02"
             title="Historical Series"
             subtitle="Month-over-month index values since baseline."
           />
@@ -240,7 +238,6 @@ const ComputeCPI = () => {
       <section className="py-16 md:py-24 section-padding">
         <div className="content-max">
           <SectionHeader
-            number="03"
             title="Market Basket"
             subtitle="The weighted components that comprise the headline index."
           />

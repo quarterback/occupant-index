@@ -63,8 +63,8 @@ export const IndexTicker = ({
         </span>
       </div>
       
-      <div className="flex items-end gap-4">
-        <span className="text-4xl md:text-5xl font-bold tabular-nums tracking-tight">
+      <div className="flex items-end gap-3 flex-wrap">
+        <span className="text-2xl md:text-3xl font-bold tabular-nums tracking-tight">
           {value.toFixed(2)}
         </span>
         <div className={`flex items-center gap-1 mb-2 ${getChangeColor()}`}>
