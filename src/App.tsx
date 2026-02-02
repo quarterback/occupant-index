@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import ComputeCPI from "./pages/ComputeCPI";
 import Methodology from "./pages/Methodology";
 import Memos from "./pages/Memos";
+import MemoDetail from "./pages/MemoDetail";
 import Work from "./pages/Work";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/compute-cpi" element={<ComputeCPI />} />
           <Route path="/methodology" element={<Methodology />} />
           <Route path="/memos" element={<Memos />} />
+          <Route path="/memos/:slug" element={<MemoDetail />} />
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
