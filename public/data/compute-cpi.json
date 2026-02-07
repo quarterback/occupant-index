@@ -1,0 +1,170 @@
+{
+  "meta": {
+    "generated_at": "2026-02-07T03:54:13.378Z",
+    "baseline_date": "2025-01-01",
+    "launch_date": "2025-01-15",
+    "data_sources": ["OpenAI", "Anthropic", "Google", "Meta", "Cohere"],
+    "methodology_version": "1.2.0",
+    "models_count": 47
+  },
+  "compute_cpi": {
+    "ticker": "$CPI",
+    "name": "Occupant Compute CPI",
+    "value": 127.4,
+    "mom_change": 3.2,
+    "yoy_change": null,
+    "trend": "increasing",
+    "basket_cost": 1274.50
+  },
+  "subindices": {
+    "frontier": {
+      "ticker": "$FRONT",
+      "name": "Frontier Reasoning CPI",
+      "value": 134.2,
+      "description": "Cost of frontier reasoning models (o1, Claude Opus, Gemini Ultra)",
+      "mom_change": 4.1,
+      "weight": 25
+    },
+    "bulk": {
+      "ticker": "$BULK",
+      "name": "General Purpose CPI",
+      "value": 119.8,
+      "description": "Cost of general-purpose models (GPT-4, Claude Sonnet, Gemini Pro)",
+      "mom_change": 2.8,
+      "weight": 35
+    },
+    "reason": {
+      "ticker": "$REASON",
+      "name": "Budget Inference CPI",
+      "value": 108.5,
+      "description": "Cost of budget models (GPT-3.5, Claude Haiku, open-source)",
+      "mom_change": -1.2,
+      "weight": 20
+    },
+    "lctx": {
+      "ticker": "$LCTX",
+      "name": "Long Context CPI",
+      "value": 122.3,
+      "description": "Cost per 1M tokens for extended context windows",
+      "mom_change": 2.1,
+      "weight": 10
+    },
+    "embedding": {
+      "ticker": "$EMBED",
+      "name": "Embedding CPI",
+      "value": 102.8,
+      "description": "Cost of embedding models (Ada, Voyage, Cohere)",
+      "mom_change": 0.5,
+      "weight": 10
+    }
+  },
+  "spreads": {
+    "cognition_premium": {
+      "ticker": "$COGPREM",
+      "name": "Cognition Premium",
+      "value": 25.7,
+      "unit": "pts",
+      "description": "Cost delta between frontier reasoning models and budget alternatives",
+      "trend": "widening"
+    },
+    "judgment_premium": {
+      "ticker": "$JUDGPREM",
+      "name": "Judgment Premium",
+      "value": 14.4,
+      "unit": "pts",
+      "description": "Additional cost for models with reliable judgment vs raw capability",
+      "trend": "stable"
+    },
+    "context_premium": {
+      "ticker": "$CTXPREM",
+      "name": "Context Premium",
+      "value": 11.3,
+      "unit": "pts",
+      "description": "Extended context vs standard. Indicates memory cost economics",
+      "trend": "narrowing"
+    }
+  },
+  "persona_cpis": {
+    "startup": {
+      "ticker": "$START",
+      "name": "Startup Persona CPI",
+      "cpi": 115.2,
+      "mom_change": 2.8,
+      "description": "Optimized for prototyping and rapid iteration"
+    },
+    "agentic": {
+      "ticker": "$AGENT",
+      "name": "Agentic Persona CPI",
+      "cpi": 131.5,
+      "mom_change": 3.5,
+      "description": "Autonomous systems requiring reliable judgment"
+    },
+    "throughput": {
+      "ticker": "$THRU",
+      "name": "Throughput Persona CPI",
+      "cpi": 106.8,
+      "mom_change": 1.2,
+      "description": "High-volume processing at scale"
+    }
+  },
+  "basket_components": [
+    {
+      "category": "Frontier Reasoning",
+      "weight": 25,
+      "examples": "o1, Claude Opus, Gemini Ultra",
+      "avg_cost_per_1m_tokens": 45.0
+    },
+    {
+      "category": "General Purpose",
+      "weight": 35,
+      "examples": "GPT-4, Claude Sonnet, Gemini Pro",
+      "avg_cost_per_1m_tokens": 12.5
+    },
+    {
+      "category": "Budget Inference",
+      "weight": 20,
+      "examples": "GPT-3.5, Claude Haiku, open-source",
+      "avg_cost_per_1m_tokens": 2.3
+    },
+    {
+      "category": "Embedding & Search",
+      "weight": 10,
+      "examples": "Ada, Voyage, Cohere",
+      "avg_cost_per_1m_tokens": 0.15
+    },
+    {
+      "category": "Multimodal",
+      "weight": 10,
+      "examples": "Vision models, audio, video",
+      "avg_cost_per_1m_tokens": 8.7
+    }
+  ],
+  "trend_analysis": {
+    "direction": "upward",
+    "velocity": 2.6,
+    "forecast_30d": 130.8,
+    "confidence": "medium",
+    "factors": [
+      "Frontier model price increases",
+      "Growing demand for reasoning capabilities",
+      "Competitive pressure in budget tier"
+    ]
+  },
+  "yield_curve": {
+    "curve": {
+      "1M": 105.2,
+      "3M": 110.5,
+      "6M": 118.3,
+      "12M": 127.4,
+      "24M": 145.2
+    },
+    "interpretation": "Steep upward slope indicates sustained cost inflation in AI compute",
+    "inversion_risk": "low"
+  },
+  "exchange_rates": {
+    "gpt4_to_claude_sonnet": 1.15,
+    "claude_opus_to_gpt4": 1.42,
+    "gemini_ultra_to_gpt4": 1.38,
+    "description": "Relative cost ratios between major model families"
+  }
+}

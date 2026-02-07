@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "generated_at": "2026-02-07T03:54:13.378Z",
+    "baseline_date": "2025-01-01",
+    "start_date": "2025-01-01",
+    "end_date": "2026-02-01",
+    "data_points": 13
+  },
+  "historical_series": [
+    {
+      "period": "Jan 2025",
+      "date": "2025-01-01",
+      "value": 100.0,
+      "mom_change": null,
+      "yoy_change": null
+    },
+    {
+      "period": "Feb 2025",
+      "date": "2025-02-01",
+      "value": 101.5,
+      "mom_change": 1.5,
+      "yoy_change": null
+    },
+    {
+      "period": "Mar 2025",
+      "date": "2025-03-01",
+      "value": 103.8,
+      "mom_change": 2.3,
+      "yoy_change": null
+    },
+    {
+      "period": "Apr 2025",
+      "date": "2025-04-01",
+      "value": 106.2,
+      "mom_change": 2.3,
+      "yoy_change": null
+    },
+    {
+      "period": "May 2025",
+      "date": "2025-05-01",
+      "value": 108.4,
+      "mom_change": 2.1,
+      "yoy_change": null
+    },
+    {
+      "period": "Jun 2025",
+      "date": "2025-06-01",
+      "value": 111.2,
+      "mom_change": 2.6,
+      "yoy_change": null
+    },
+    {
+      "period": "Jul 2025",
+      "date": "2025-07-01",
+      "value": 113.0,
+      "mom_change": 1.6,
+      "yoy_change": null
+    },
+    {
+      "period": "Aug 2025",
+      "date": "2025-08-01",
+      "value": 115.6,
+      "mom_change": 2.3,
+      "yoy_change": null
+    },
+    {
+      "period": "Sep 2025",
+      "date": "2025-09-01",
+      "value": 117.8,
+      "mom_change": 1.9,
+      "yoy_change": null
+    },
+    {
+      "period": "Oct 2025",
+      "date": "2025-10-01",
+      "value": 119.5,
+      "mom_change": 1.4,
+      "yoy_change": null
+    },
+    {
+      "period": "Nov 2025",
+      "date": "2025-11-01",
+      "value": 122.0,
+      "mom_change": 2.1,
+      "yoy_change": null
+    },
+    {
+      "period": "Dec 2025",
+      "date": "2025-12-01",
+      "value": 124.2,
+      "mom_change": 1.8,
+      "yoy_change": null
+    },
+    {
+      "period": "Jan 2026",
+      "date": "2026-01-01",
+      "value": 127.4,
+      "mom_change": 2.6,
+      "yoy_change": 27.4
+    }
+  ]
+}
