@@ -11,6 +11,9 @@ import MemoDetail from "./pages/MemoDetail";
 import Work from "./pages/Work";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import MarketIntel from "./pages/MarketIntel";
+import Calculator from "./pages/Calculator";
+import GovBenchmarks from "./pages/GovBenchmarks";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +33,9 @@ const App = () => (
           <Route path="/work" element={<Work />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/market-intel" element={<MarketIntel />} />
+          <Route path="/calculator" element={<Calculator />} />
+          <Route path="/gov" element={<GovBenchmarks />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
