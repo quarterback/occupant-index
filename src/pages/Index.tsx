@@ -8,35 +8,65 @@ import IndexTicker from "@/components/IndexTicker";
 import SpreadCard from "@/components/SpreadCard";
 import MemoCard from "@/components/MemoCard";
 import { ArrowRight } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCPIData } from "@/services/cpiData";
 
 const Index = () => {
-  // Sample index data
-  const indexData = {
-    headline: 127.4,
-    change: 3.2,
-    changePercent: 2.6,
-  };
+  // Fetch real CPI data
+  const { data: cpiData, isLoading, error } = useQuery({
+    queryKey: ['cpi-data'],
+    queryFn: fetchCPIData,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
 
-  const subIndices = [
-    { name: "Judgment CPI", value: 134.2, change: 4.1, changePercent: 3.2 },
-    { name: "Long Context CPI", value: 119.8, change: 2.8, changePercent: 2.4 },
-    { name: "Budget CPI", value: 108.5, change: -1.2, changePercent: -1.1 },
-  ];
+  // Compute derived values from real data
+  const indexData = cpiData ? {
+    headline: cpiData.compute_cpi.value,
+    change: cpiData.compute_cpi.mom_change || 0,
+    changePercent: cpiData.compute_cpi.mom_change || 0,
+  } : { headline: 0, change: 0, changePercent: 0 };
 
-  const spreads = [
+  // Map subindices from real data (using frontier, bulk, reason)
+  const subIndices = cpiData ? [
+    { 
+      name: cpiData.subindices.frontier.name, 
+      value: cpiData.subindices.frontier.value, 
+      change: cpiData.subindices.frontier.mom_change, 
+      changePercent: cpiData.subindices.frontier.mom_change 
+    },
+    { 
+      name: cpiData.subindices.lctx.name, 
+      value: cpiData.subindices.lctx.value, 
+      change: cpiData.subindices.lctx.mom_change, 
+      changePercent: cpiData.subindices.lctx.mom_change 
+    },
+    { 
+      name: cpiData.subindices.reason.name, 
+      value: cpiData.subindices.reason.value, 
+      change: cpiData.subindices.reason.mom_change, 
+      changePercent: cpiData.subindices.reason.mom_change 
+    },
+  ] : [];
+
+  // Map spreads from real data
+  const spreads = cpiData ? [
     {
-      name: "Cognition Premium",
-      description: "Cost delta between frontier reasoning models and budget alternatives.",
-      value: 25.7,
-      trend: "up" as const,
+      name: cpiData.spreads.cognition_premium.name,
+      description: cpiData.spreads.cognition_premium.description,
+      value: cpiData.spreads.cognition_premium.value,
+      trend: cpiData.spreads.cognition_premium.trend === "widening" ? "up" as const : 
+             cpiData.spreads.cognition_premium.trend === "narrowing" ? "down" as const : 
+             "stable" as const,
     },
     {
-      name: "Judgment Premium", 
-      description: "Additional cost for models with reliable judgment vs raw capability.",
-      value: 14.4,
-      trend: "stable" as const,
+      name: cpiData.spreads.judgment_premium.name, 
+      description: cpiData.spreads.judgment_premium.description,
+      value: cpiData.spreads.judgment_premium.value,
+      trend: cpiData.spreads.judgment_premium.trend === "widening" ? "up" as const : 
+             cpiData.spreads.judgment_premium.trend === "narrowing" ? "down" as const : 
+             "stable" as const,
     },
-  ];
+  ] : [];
 
   const recentMemos = [
     {
@@ -56,6 +86,37 @@ const Index = () => {
       tag: "Index Report",
     },
   ];
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="animate-pulse text-text-secondary">Loading index data...</div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="text-text-secondary">Failed to load index data</div>
+            <div className="text-sm text-text-tertiary mt-2">{error.message}</div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

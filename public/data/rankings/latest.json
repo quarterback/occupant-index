@@ -1,0 +1,105 @@
+{
+  "meta": {
+    "generated_at": "2026-02-07T03:54:13.378Z",
+    "period": "Jan 2026",
+    "models_ranked": 47
+  },
+  "rankings": {
+    "by_market_share": [
+      {
+        "rank": 1,
+        "model": "GPT-4",
+        "provider": "OpenAI",
+        "market_share": 28.5,
+        "mom_change": -1.2
+      },
+      {
+        "rank": 2,
+        "model": "Claude Sonnet 3.5",
+        "provider": "Anthropic",
+        "market_share": 22.3,
+        "mom_change": 2.1
+      },
+      {
+        "rank": 3,
+        "model": "Gemini Pro",
+        "provider": "Google",
+        "market_share": 18.7,
+        "mom_change": 1.5
+      },
+      {
+        "rank": 4,
+        "model": "GPT-3.5 Turbo",
+        "provider": "OpenAI",
+        "market_share": 12.4,
+        "mom_change": -0.8
+      },
+      {
+        "rank": 5,
+        "model": "Claude Haiku",
+        "provider": "Anthropic",
+        "market_share": 8.9,
+        "mom_change": 0.5
+      }
+    ],
+    "by_quality_adjusted_price": [
+      {
+        "rank": 1,
+        "model": "Claude Haiku",
+        "provider": "Anthropic",
+        "qap_score": 95.2,
+        "cost_per_1m": 0.25
+      },
+      {
+        "rank": 2,
+        "model": "GPT-3.5 Turbo",
+        "provider": "OpenAI",
+        "qap_score": 92.8,
+        "cost_per_1m": 0.50
+      },
+      {
+        "rank": 3,
+        "model": "Gemini Flash",
+        "provider": "Google",
+        "qap_score": 91.5,
+        "cost_per_1m": 0.35
+      },
+      {
+        "rank": 4,
+        "model": "Claude Sonnet 3.5",
+        "provider": "Anthropic",
+        "qap_score": 88.3,
+        "cost_per_1m": 3.00
+      },
+      {
+        "rank": 5,
+        "model": "GPT-4",
+        "provider": "OpenAI",
+        "qap_score": 85.7,
+        "cost_per_1m": 10.00
+      }
+    ],
+    "market_velocity": {
+      "fastest_growing": [
+        {
+          "model": "Claude Sonnet 3.5",
+          "growth_rate": 15.3
+        },
+        {
+          "model": "Gemini Pro",
+          "growth_rate": 12.8
+        }
+      ],
+      "declining": [
+        {
+          "model": "GPT-4",
+          "decline_rate": -4.2
+        },
+        {
+          "model": "GPT-3.5 Turbo",
+          "decline_rate": -6.5
+        }
+      ]
+    }
+  }
+}

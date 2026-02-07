@@ -7,82 +7,87 @@ import IndexTicker from "@/components/IndexTicker";
 import SpreadCard from "@/components/SpreadCard";
 import { ArrowRight, Download, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCPIData, fetchHistoricalData } from "@/services/cpiData";
 
 const ComputeCPI = () => {
-  // Current index values
-  const headlineIndex = {
-    name: "Occupant Index",
-    value: 127.4,
-    change: 3.2,
-    changePercent: 2.6,
-    baseDate: "Jan 2025",
-  };
+  // Fetch real CPI data
+  const { data: cpiData, isLoading: cpiLoading, error: cpiError } = useQuery({
+    queryKey: ['cpi-data'],
+    queryFn: fetchCPIData,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  const subIndices = [
-    { 
-      name: "Judgment CPI", 
-      value: 134.2, 
-      change: 4.1, 
-      changePercent: 3.2,
-      description: "Cost of reliable judgment-requiring tasks"
-    },
-    { 
-      name: "Long Context CPI", 
-      value: 119.8, 
-      change: 2.8, 
-      changePercent: 2.4,
-      description: "Cost per 1M tokens for extended context"
-    },
-    { 
-      name: "Budget CPI", 
-      value: 108.5, 
-      change: -1.2, 
-      changePercent: -1.1,
-      description: "Cost of commodity inference tasks"
-    },
-  ];
+  // Fetch historical data
+  const { data: historicalData, isLoading: histLoading, error: histError } = useQuery({
+    queryKey: ['historical-data'],
+    queryFn: fetchHistoricalData,
+    staleTime: 5 * 60 * 1000,
+  });
 
-  const spreads = [
-    {
-      name: "Cognition Premium",
-      description: "Frontier reasoning vs budget models. Widening spread indicates capability stratification.",
-      value: 25.7,
-      trend: "up" as const,
-    },
-    {
-      name: "Judgment Premium", 
-      description: "Reliable judgment vs raw capability. Measures the cost of trustworthy outputs.",
-      value: 14.4,
-      trend: "stable" as const,
-    },
-    {
-      name: "Context Premium",
-      description: "Extended context vs standard. Indicates memory cost economics.",
-      value: 11.3,
-      trend: "down" as const,
-    },
-  ];
+  const isLoading = cpiLoading || histLoading;
+  const error = cpiError || histError;
 
-  // Historical data for simple display
-  const historicalData = [
-    { period: "Jan 2026", value: 127.4, change: 2.6 },
-    { period: "Dec 2025", value: 124.2, change: 1.8 },
-    { period: "Nov 2025", value: 122.0, change: 2.1 },
-    { period: "Oct 2025", value: 119.5, change: 1.4 },
-    { period: "Sep 2025", value: 117.8, change: 1.9 },
-    { period: "Aug 2025", value: 115.6, change: 2.3 },
-    { period: "Jul 2025", value: 113.0, change: 1.6 },
-    { period: "Jun 2025", value: 111.2, change: 1.8 },
-  ];
+  // Map data from API
+  const headlineIndex = cpiData ? {
+    name: cpiData.compute_cpi.name,
+    value: cpiData.compute_cpi.value,
+    change: cpiData.compute_cpi.mom_change || 0,
+    changePercent: cpiData.compute_cpi.mom_change || 0,
+    baseDate: cpiData.meta.baseline_date,
+  } : { name: "", value: 0, change: 0, changePercent: 0, baseDate: "" };
 
-  // Market basket components
-  const basketComponents = [
-    { category: "Frontier Reasoning", weight: 25, examples: "o1, Claude Opus, Gemini Ultra" },
-    { category: "General Purpose", weight: 35, examples: "GPT-4, Claude Sonnet, Gemini Pro" },
-    { category: "Budget Inference", weight: 20, examples: "GPT-3.5, Claude Haiku, open-source" },
-    { category: "Embedding & Search", weight: 10, examples: "Ada, Voyage, Cohere" },
-    { category: "Multimodal", weight: 10, examples: "Vision models, audio, video" },
-  ];
+  const subIndices = cpiData ? Object.values(cpiData.subindices).slice(0, 3).map(sub => ({
+    name: sub.name,
+    value: sub.value,
+    change: sub.mom_change,
+    changePercent: sub.mom_change,
+    description: sub.description,
+  })) : [];
+
+  const spreads = cpiData ? Object.values(cpiData.spreads).map(spread => ({
+    name: spread.name,
+    description: spread.description,
+    value: spread.value,
+    trend: spread.trend === "widening" ? "up" as const : 
+           spread.trend === "narrowing" ? "down" as const : 
+           "stable" as const,
+  })) : [];
+
+  const basketComponents = cpiData?.basket_components || [];
+
+  const historicalSeries = historicalData?.historical_series.slice(-8).reverse() || [];
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="animate-pulse text-text-secondary">Loading CPI data...</div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <div className="flex items-center justify-center min-h-[60vh]">
+          <div className="text-center">
+            <div className="text-text-secondary">Failed to load CPI data</div>
+            <div className="text-sm text-text-tertiary mt-2">{error.message}</div>
+          </div>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -199,7 +204,7 @@ const ComputeCPI = () => {
             </div>
             
             {/* Table Rows */}
-            {historicalData.map((row, i) => (
+            {historicalSeries.map((row, i) => (
               <motion.div
                 key={row.period}
                 initial={{ opacity: 0, x: -10 }}
@@ -210,8 +215,8 @@ const ComputeCPI = () => {
               >
                 <span className="font-mono text-sm">{row.period}</span>
                 <span className="font-mono text-sm tabular-nums text-right font-medium">{row.value.toFixed(1)}</span>
-                <span className={`font-mono text-sm tabular-nums text-right ${row.change > 0 ? 'text-index-positive' : 'text-index-negative'}`}>
-                  {row.change > 0 ? '+' : ''}{row.change.toFixed(1)}%
+                <span className={`font-mono text-sm tabular-nums text-right ${(row.mom_change || 0) > 0 ? 'text-index-positive' : 'text-index-negative'}`}>
+                  {(row.mom_change || 0) > 0 ? '+' : ''}{(row.mom_change || 0).toFixed(1)}%
                 </span>
               </motion.div>
             ))}
