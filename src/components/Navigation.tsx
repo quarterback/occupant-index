@@ -22,7 +22,7 @@ export const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className="brand-bracket font-semibold tracking-tight text-base">
-              [occupant]
+              occupant
             </span>
           </Link>
 

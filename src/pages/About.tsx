@@ -40,7 +40,7 @@ const About = () => {
             className="max-w-2xl"
           >
             <span className="brand-bracket font-semibold text-xl mb-6 block">
-              [occupant]
+              occupant
             </span>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
               About
