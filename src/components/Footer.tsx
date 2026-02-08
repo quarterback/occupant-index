@@ -8,7 +8,7 @@ export const Footer = () => {
           {/* Brand Column */}
           <div className="md:col-span-2">
             <span className="brand-bracket font-semibold text-base mb-4 block">
-              [occupant]
+              occupant
             </span>
             <p className="text-text-secondary text-sm max-w-sm mb-6">
               Trust + Decision Engineering. 

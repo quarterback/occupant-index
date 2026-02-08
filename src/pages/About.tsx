@@ -40,7 +40,7 @@ const About = () => {
             className="max-w-2xl"
           >
             <span className="brand-bracket font-semibold text-xl mb-6 block">
-              [occupant]
+              occupant
             </span>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
               About
@@ -140,16 +140,16 @@ const About = () => {
                 <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider block mb-1">
                   General
                 </span>
-                <a href="mailto:hello@occupant.co" className="text-foreground hover:underline">
-                  hello@occupant.co
+                <a href="mailto:hello@occupant.ee" className="text-foreground hover:underline">
+                  hello@occupant.ee
                 </a>
               </div>
               <div>
                 <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider block mb-1">
                   Research
                 </span>
-                <a href="mailto:research@occupant.co" className="text-foreground hover:underline">
-                  research@occupant.co
+                <a href="mailto:hello@occupant.ee" className="text-foreground hover:underline">
+                  hello@occupant.ee
                 </a>
               </div>
             </div>

@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Occupant Design System
    Terminal / Research Memo Aesthetic
    Colors: Black, White, Grayscale
@@ -9,6 +5,19 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Aminute Font - Brand Logo */
+@font-face {
+  font-family: 'Aminute';
+  src: url('/fonts/aminute-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   :root {
@@ -178,9 +187,13 @@
     @apply inline-block mx-2 md:mx-3 text-muted-foreground;
   }
   
-  /* Bracketed signature [occupant] */
+  /* Brand logo - Aminute font styling */
   .brand-bracket {
-    @apply font-mono text-sm tracking-wide;
+    font-family: 'Aminute', sans-serif;
+    font-size: 0.875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: normal;
   }
   
   /* Ticker row styling */
