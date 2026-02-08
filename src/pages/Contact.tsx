@@ -185,24 +185,24 @@ const Contact = () => {
                     <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider block mb-1">
                       General Inquiries
                     </span>
-                    <a href="mailto:hello@occupant.co" className="text-foreground hover:underline">
-                      hello@occupant.co
+                    <a href="mailto:hello@occupant.ee" className="text-foreground hover:underline">
+                      hello@occupant.ee
                     </a>
                   </div>
                   <div>
                     <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider block mb-1">
                       Research & Data
                     </span>
-                    <a href="mailto:research@occupant.co" className="text-foreground hover:underline">
-                      research@occupant.co
+                    <a href="mailto:hello@occupant.ee" className="text-foreground hover:underline">
+                      hello@occupant.ee
                     </a>
                   </div>
                   <div>
                     <span className="font-mono text-xs text-text-tertiary uppercase tracking-wider block mb-1">
                       Press
                     </span>
-                    <a href="mailto:press@occupant.co" className="text-foreground hover:underline">
-                      press@occupant.co
+                    <a href="mailto:hello@occupant.ee" className="text-foreground hover:underline">
+                      hello@occupant.ee
                     </a>
                   </div>
                 </div>
